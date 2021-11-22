@@ -23,7 +23,7 @@ btnA.wasPressed(btn_a_press)
 
 
 def btn_b_press():
-    lcd.clear()
+    log.clear()
 
 
 btnB.wasPressed(btn_b_press)
