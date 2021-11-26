@@ -30,4 +30,3 @@ def b_2press():
 
 
 btnB.wasDoublePress(b_2press)
-#ren
