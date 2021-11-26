@@ -45,13 +45,3 @@ def settime(offset=0):
     tm = utime.localtime(t)
     tm = tm[0:3] + (0, ) + tm[3:6] + (0, )
     machine.RTC().datetime(tm)
-
-
-def sync_jp_localtime_with_ntp():
-    import utime
-    from m5stack import rtc
-    host = "pool.ntp.org"
-    offset = 9 * 3600
-    settime(offset)
-    t = utime.localtime()
-    rtc.setTime(t[0], t[1], t[2], t[3], t[4], t[5])
