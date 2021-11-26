@@ -1,21 +1,14 @@
-from typing import List, Tuple
+from typing import List
 from m5stack import lcd, rtc
 import wifiCfg
-
-DatetimeT = Tuple[int, int, int, int, int, int]
 
 
 class Log():
     def __init__(self) -> None:
-        winsize = lcd.winsize()
-        self.win_width = winsize[0]
-        self.win_height = winsize[1]
+        self.win_width, self.win_height = lcd.winsize()
+        self.font_width, self.font_height = lcd.fontSize()
 
-        fontsize = lcd.fontSize()
-        self.font_width = fontsize[0]
-        self.font_height = fontsize[1]
-
-        self.max_len_per_line = self.win_width // int(self.font_width * 0.8)
+        self.max_len_per_line = self.win_width // self.font_width - 1
         self.max_line = self.win_height // self.font_height - 1
 
         self.loglist: List[str] = []
@@ -59,7 +52,7 @@ def sync_jp_localtime_with_ntp():
     rtc.setTime(t[0], t[1], t[2], t[3], t[4], t[5])
 
 
-def date_format(date: DatetimeT):
+def date_format(date):
     return "%04d-%02d-%02d %02d:%02d:%02d" % date
 
 
