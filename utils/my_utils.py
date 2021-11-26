@@ -57,7 +57,9 @@ def sync_jp_localtime_with_ntp():
     rtc.setTime(t[0], t[1], t[2], t[3], t[4], t[5])
 
 
-def my_init(rotation, font, print_pox, print_poy, wifilcdShow=True):
+def my_init(
+    rotation=0, font=lcd.FONT_DefaultSmall, print_pox=0, print_poy=0, wifilcdShow=True
+):
     wifiCfg.autoConnect(lcdShow=wifilcdShow)
     sync_jp_localtime_with_ntp()
 
