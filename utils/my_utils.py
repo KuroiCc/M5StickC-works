@@ -1,6 +1,8 @@
-from typing import List
+from typing import List, Tuple
 from m5stack import lcd, rtc
 import wifiCfg
+
+DatetimeT = Tuple[int, int, int, int, int, int]
 
 
 class Log():
@@ -55,6 +57,10 @@ def sync_jp_localtime_with_ntp():
     ntp.settime(offset)
     t = utime.localtime()
     rtc.setTime(t[0], t[1], t[2], t[3], t[4], t[5])
+
+
+def date_format(date: DatetimeT):
+    return "%04d-%02d-%02d %02d:%02d:%02d" % date
 
 
 def my_init(
