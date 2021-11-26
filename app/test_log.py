@@ -1,21 +1,17 @@
 from m5stack import *
 from m5ui import *
 from uiflow import *
-from my_utils import Log, my_init
+from my_utils import Logger, my_init
 from random import randint
 
-my_init(3, lcd.FONT_DefaultSmall, 0, 0)
+my_init(rotation=1)
 
-log = Log()
-
-lcd.println(log.max_len_per_line)
-lcd.println(log.max_line)
+log = Logger(ezdata_token="3lpzokiWbY4LzE61mraLIF5fsMV5Ja4m")
 
 
 def btn_a_press():
-    t = ""
-    for i in range(randint(1, 20)):
-        t += str(randint(1, 10))
+    num = randint(1, 30)
+    t = str(num + len(str(num))) + chr(randint(65, 90)) * num
     log.log(t)
 
 

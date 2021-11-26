@@ -1,13 +1,13 @@
 from m5stack import *
 from m5ui import *
 from uiflow import *
-from my_utils import Log, my_init
+from my_utils import Logger, my_init
 
-my_init(0, lcd.FONT_DefaultSmall, 0, 0)
+my_init()
 
 led_status = False
 
-log = Log()
+log = Logger()
 
 
 def A_press():
